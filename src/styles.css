@@ -1,3 +1,79 @@
+.epunda-slab-text {
+  font-family: "Epunda Slab", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
-  font-family: sans-serif;
+  font-family: Epunda Slab;
+  background: linear-gradient(135deg, #2e8b57, #a8d5ba);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #2d3436;
+}
+.container {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 24px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+h1 {
+  text-align: center;
+  color: #1a202c;
+  margin-bottom: 5px;
+  font-size: 2.2rem;
+  font-weight: 600px;
+  letter-spacing: 5px;
+}
+h2 {
+  color: #1a202c;
+  font-size: 1.25rem;
+  margin-bottom: 1px;
+  font-weight: 500;
+}
+.balance-container {
+  text-align: center;
+  margin-bottom: 35px;
+  padding: 24px;
+  background: linear-gradient(135deg, #a8d5ba, #6b8e23);
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.balance-container h1 {
+  font-size: 3rem;
+  margin: 15px 0;
+}
+.summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 20px;
+  gap: 24px;
+}
+.main-Content {
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.income,
+.expenses {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  transition: transform 0.2s ease;
+}
+.income:hover,
+.expenses:hover {
+  transform: translateY(-2px);
 }
