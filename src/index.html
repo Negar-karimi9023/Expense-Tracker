@@ -5,51 +5,70 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com"><style>
-      @import url('https://fonts.googleapis.com/css2?family=Epunda+Slab:ital,wght@0,300..900;1,300..900&display=swap');
-      </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Epunda+Slab:ital,wght@0,300..900;1,300..900&display=swap");
+    </style>
   </head>
 
   <body>
     <div class="container">
       <h1>Expense Tracker</h1>
+
       <div class="balance-container">
         <h2>Your Balance</h2>
-        <h1>$0.000</h1>
+        <h1 id="balance">$0.00</h1>
+
         <div class="summary">
           <div class="income">
             <h3>Income</h3>
-            <p id="income-Amount">$0.000</p>
+            <p id="income-amount">$0.00</p>
           </div>
           <div class="expenses">
-            <h3>Expense</h3>
-            <p id="expense-Amount">$0.000</p>
+            <h3>Expenses</h3>
+            <p id="expense-amount">$0.00</p>
           </div>
         </div>
       </div>
-      <div class="main-Content">
-        <div class="transaction-Container">
-          <h1>Transactions</h1>
-          <ul id="transaction-List"></ul>
+
+      <div class="main-content">
+        <div class="transaction-container">
+          <h2>Transactions</h2>
+          <ul id="transaction-list">
+            <!-- TRANSACTIONS WILL BE INSERTED HERE -->
+          </ul>
         </div>
+
         <div class="form-container">
-          <h2>form</h1>
-            <form id="transaction-Form">
-<div class="form-Group">
-  <label for="description">Description</label>
-  <input type="text" id="description" placeholder="Enter Descripiton ...." required>
-</div>
-<div class="form-Group">
-  <label for="amount">Amount</label>
-  <input type="number" id="amount" placeholder="Enter Amount ...." required>
-  <small>Use (-) for negative expenses</small>
-</div>
-<button type="submit">Add Transaction</button>    
-            </form>
+          <h2>Add Transaction</h2>
+
+          <form id="transaction-form">
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input
+                type="text"
+                id="description"
+                placeholder="Enter description..."
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="amount">Amount</label>
+              <input
+                type="number"
+                id="amount"
+                placeholder="Enter amount..."
+                required
+              />
+              <small>Use negative (-) for expenses</small>
+            </div>
+
+            <button type="submit">Add Transaction</button>
+          </form>
         </div>
       </div>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>
