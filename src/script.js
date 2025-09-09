@@ -6,7 +6,7 @@ const descriptionEl = document.getElementById("description");
 const amountEl = document.getElementById("amount");
 const transactionFormEl = document.getElementById("transaction-form");
 
-const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
+let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
 function addTransaction(e) {
   e.preventDefault();
@@ -39,11 +39,48 @@ function createTransacrionElement(transaction) {
   li.classList.add(transaction.amount > 0 ? "income" : "expense");
   li.innerHTML = `
   <span>${transaction.description}</span>
-  <span>${transaction.amount}
-  <button class="delete-btn" onclick="removeTransaction(${transaction.id})">x</button>
+  <span>${formatCurrency(transaction.amount)}
+  <button class="delete-btn" onclick="removeTransaction(${
+    transaction.id
+  })">x</button>
   </span>
   `;
   return li;
 }
 
+function updateSummery() {
+  const balance = transactions.reduce(
+    (acc, transaction) => acc + transaction.amount,
+    0
+  );
+  const income = transactions
+    .filter((transaction) => (transaction.amount > 0 ? transaction.amount : 0))
+    .reduce((acc, transaction) => acc + transaction.amount, 0);
+
+  const expense = transactions
+    .filter((transaction) => (transaction.amount < 0 ? transaction.amount : 0))
+    .reduce((acc, transaction) => acc + transaction.amount, 0);
+
+  balanceEl.innerText = formatCurrency(balance);
+  incomeAmountEl.innerText = formatCurrency(income);
+  expenseAmountEl.innerText = formatCurrency(expense);
+}
+
+function formatCurrency(number) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(number);
+}
+
+function removeTransaction(id) {
+  console.log(id);
+  transactions = transactions.filter((transaction) => transaction.id !== id);
+  localStorage.setItem("transactions", JSON.stringify(transactions));
+  updateTransactionList();
+  updateSummery();
+}
+
+updateTransactionList();
+updateSummery();
 transactionFormEl.addEventListener("submit", addTransaction);
